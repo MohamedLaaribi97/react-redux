@@ -12,7 +12,8 @@ const MovieList = ({ data }) => {
   });
   return (
     <>
-      <input style={{marginTop: 20}} 
+      <input
+        style={{ marginTop: 20 }}
         type="search"
         placeholder="search"
         onChange={(e) => setSearch(e.target.value)}

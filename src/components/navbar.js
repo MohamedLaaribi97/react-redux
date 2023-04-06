@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { MenuItem } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   const Search = styled("div")(({ theme }) => ({
@@ -74,6 +76,18 @@ const NavBar = (props) => {
           >
             Movie Site
           </Typography>
+          <Link to='/'>
+          <MenuItem>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            color="white"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+          Home           </Typography>
+            </MenuItem>
+                        </Link> 
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

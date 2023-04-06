@@ -14,6 +14,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -75,6 +77,9 @@ export default function CardItem({ item }) {
         >
           <ExpandMoreIcon />
         </ExpandMore>
+        <Link to={`/DescPage/${item.id}`}>
+          <Button variant="contained">View description</Button>
+        </Link>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
