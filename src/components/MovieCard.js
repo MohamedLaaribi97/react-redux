@@ -16,6 +16,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { deleteSerie } from "../redux/action/serieActions";
+import { useDispatch } from "react-redux";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,7 +33,7 @@ const ExpandMore = styled((props) => {
 
 export default function CardItem({ item }) {
   const [expanded, setExpanded] = React.useState(false);
-
+  const dispatch = useDispatch();
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -80,6 +83,9 @@ export default function CardItem({ item }) {
         <Link to={`/DescPage/${item.id}`}>
           <Button variant="contained">View description</Button>
         </Link>
+        <IconButton onClick={() => dispatch(deleteSerie(item.id))}>
+          <DeleteForeverIcon />
+        </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

@@ -1,0 +1,4 @@
+const ADD_SERIE = "ADD_SERIE";
+const DELETE_SERIE = "DELETE_SERIE";
+
+export { ADD_SERIE, DELETE_SERIE };

@@ -1,10 +1,14 @@
 import { useState } from "react";
 import CardItem from "./MovieCard";
+import { useSelector } from "react-redux";
 
-const MovieList = ({ data }) => {
-  console.log(data);
+
+
+const MovieList = () => {
+  const serieList = useSelector(state => state.seriesReducer.series)
+console.log(serieList)
   const [search, setSearch] = useState("");
-  const filteredData = data.filter((item) => {
+  const filteredData = serieList.filter((item) => {
     return (
       item.title.toLowerCase().includes(search.toLowerCase()) ||
       item.rating.toString().includes(search)

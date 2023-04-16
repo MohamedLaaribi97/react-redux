@@ -3,8 +3,13 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 
 import { FormControl, Input, InputLabel, TextField } from "@mui/material";
+import { useDispatch, useSelector} from "react-redux";
+import { addSerie } from "../redux/action/serieActions";
 
-const Filtred = ({ setSeriesList, SeriesList }) => {
+const Filtred = () => {
+  const serieList = useSelector(state => state.seriesReducer.series)
+  console.log(serieList)
+ const dispatch = useDispatch();
   const [newSerie, setNewSerie] = useState({
     title: "",
     rating: 0,
@@ -17,15 +22,7 @@ const Filtred = ({ setSeriesList, SeriesList }) => {
       [e.target.name]: e.target.value,
     });
   };
-  const addSerie = (newSerie) => {
-    setSeriesList([
-      ...SeriesList,
-      {
-        id: SeriesList.length + 1,
-        ...newSerie,
-      },
-    ]);
-  };
+
   return (
     <div style={{ marginTop: 10 }}>
       <FormControl variant="standard">
@@ -52,7 +49,10 @@ const Filtred = ({ setSeriesList, SeriesList }) => {
         style={{ marginLeft: 10 }}
         variant="contained"
         endIcon={<SendIcon />}
-        onClick={() => addSerie(newSerie)}
+        onClick={(e) => {
+          e.preventDefault(e);
+          dispatch(addSerie(newSerie));
+        }}
       >
         Add Serie/Movie
       </Button>
